@@ -1,0 +1,13 @@
+# پکیج خروجی deploy
+*.zip
+
+# خروجی build و وابستگی‌ها (علاوه بر app/.gitignore برای اطمینان)
+app/node_modules/
+app/dist/
+app/dist-ssr/
+app/coverage/
+
+# لاگ‌ها و فایل‌های موقت
+*.log
+.DS_Store
+.env

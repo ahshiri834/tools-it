@@ -1,0 +1,434 @@
+home:
+  categories:
+    newestTools: جدیدترین ابزارها
+    favoriteTools: 'ابزارهای مورد علاقه شما'
+    allTools: 'همه ابزارها'
+    favoritesDndToolTip: 'برای مرتب‌سازی بکشید و رها کنید'
+  subtitle: 'ابزارهای کاربردی برای توسعه‌دهندگان'
+  toggleMenu: 'نمایش/پنهان منو'
+  home: خانه
+  uiLib: 'کتابخانه UI'
+  support: 'حمایت از IT-Tools'
+  buyMeACoffee: 'حمایت مالی'
+  follow:
+    title: 'IT-Tools رو دوست داری؟'
+    p1: 'ستاره بده در'
+    githubRepository: 'مخزن GitHub'
+    p2: 'یا دنبال کن در'
+    twitterXAccount: 'حساب X'
+    thankYou: 'ممنون!'
+  nav:
+    github: 'مخزن GitHub'
+    githubRepository: 'مخزن GitHub'
+    twitterX: 'حساب X'
+    twitterXAccount: 'حساب X'
+    about: 'درباره IT-Tools'
+    aboutLabel: 'درباره ما'
+    darkMode: 'حالت تاریک'
+    lightMode: 'حالت روشن'
+    mode: 'تغییر حالت تاریک/روشن'
+about:
+  content: >
+    # درباره IT-Tools
+
+    این وبسایت مجموعه‌ای از ابزارهای آنلاین کاربردی برای توسعه‌دهندگان و متخصصان IT است. اگر مفید بود، آن را با دیگران به اشتراک بگذارید!
+
+404:
+  notFound: '۴۰۴ - صفحه پیدا نشد'
+  sorry: 'متأسفیم، این صفحه وجود ندارد'
+  maybe: 'شاید کش مرورگر مشکل ایجاد کرده، رفرش کنید'
+  backHome: 'بازگشت به خانه'
+favoriteButton:
+  remove: 'حذف از علاقه‌مندی‌ها'
+  add: 'افزودن به علاقه‌مندی‌ها'
+toolCard:
+  new: جدید
+search:
+  label: جستجو
+tools:
+  categories:
+    favorite-tools: 'ابزارهای مورد علاقه'
+    crypto: رمزنگاری
+    converter: تبدیل‌گر
+    web: وب
+    images and videos: 'تصویر و ویدیو'
+    development: توسعه
+    network: شبکه
+    math: ریاضی
+    measurement: اندازه‌گیری
+    text: متن
+    data: داده
+
+  password-strength-analyser:
+    title: Password strength analyser
+    description: قدرت رمز عبور خود را با این ابزار تحلیل کنید.
+
+  chronometer:
+    title: Chronometer
+    description: زمان‌سنج ساده برای اندازه‌گیری مدت زمان.
+
+  token-generator:
+    title: Token generator
+    description: تولید رشته تصادفی با کاراکترهای دلخواه.
+    uppercase: حروف بزرگ (ABC...)
+    lowercase: حروف کوچک (abc...)
+    numbers: اعداد (123...)
+    symbols: نمادها (!-;...)
+    length: طول
+    tokenPlaceholder: 'توکن...'
+    copied: توکن در کلیپ‌بورد کپی شد
+    button:
+      copy: کپی
+      refresh: تازه‌سازی
+
+  percentage-calculator:
+    title: Percentage calculator
+    description: محاسبه آسان درصد بین دو مقدار.
+
+  svg-placeholder-generator:
+    title: SVG placeholder generator
+    description: تولید تصاویر SVG برای استفاده به عنوان placeholder.
+
+  json-to-csv:
+    title: JSON to CSV
+    description: تبدیل JSON به CSV با تشخیص خودکار سرستون.
+
+  camera-recorder:
+    title: Camera recorder
+    description: عکس‌برداری یا فیلم‌برداری از وب‌کم.
+
+  keycode-info:
+    title: Keycode info
+    description: یافتن keycode جاوااسکریپت هر کلید.
+
+  emoji-picker:
+    title: Emoji picker
+    description: کپی و پیست ایموجی و مشاهده کد یونیکد.
+
+  color-converter:
+    title: Color converter
+    description: تبدیل رنگ بین فرمت‌های مختلف (hex, rgb, hsl).
+
+  bcrypt:
+    title: Bcrypt
+    description: هش و مقایسه متن با bcrypt.
+
+  crontab-generator:
+    title: Crontab generator
+    description: تولید و اعتبارسنجی crontab.
+
+  http-status-codes:
+    title: HTTP status codes
+    description: لیست کامل کدهای وضعیت HTTP و معنای آن‌ها.
+
+  sql-prettify:
+    title: SQL prettify and format
+    description: فرمت‌بندی و زیباسازی کوئری‌های SQL.
+
+  benchmark-builder:
+    title: Benchmark builder
+    description: مقایسه زمان اجرای وظایف مختلف.
+
+  git-memo:
+    title: Git cheatsheet
+    description: راهنمای سریع دستورات رایج Git.
+
+  slugify-string:
+    title: Slugify string
+    description: تبدیل متن به فرمت مناسب برای URL و نام فایل.
+
+  encryption:
+    title: Encrypt / decrypt text
+    description: رمزگذاری و رمزگشایی متن با AES، TripleDES و دیگر الگوریتم‌ها.
+
+  random-port-generator:
+    title: Random port generator
+    description: تولید شماره پورت تصادفی خارج از محدوده پورت‌های شناخته‌شده.
+
+  eta-calculator:
+    title: ETA calculator
+    description: محاسبه زمان تخمینی پایان یک کار.
+
+  roman-numeral-converter:
+    title: Roman numeral converter
+    description: تبدیل اعداد رومی به اعداد عادی و بالعکس.
+
+  hmac-generator:
+    title: Hmac generator
+    description: محاسبه HMAC با کلید مخفی و تابع هش دلخواه.
+
+  bip39-generator:
+    title: BIP39 passphrase generator
+    description: تولید عبارت عبور BIP39 از mnemonic تصادفی یا موجود.
+
+  base64-file-converter:
+    title: Base64 file converter
+    description: تبدیل رشته، فایل یا تصویر به base64.
+
+  list-converter:
+    title: List converter
+    description: پردازش و تبدیل داده‌های ستونی با عملیات مختلف.
+
+  base64-string-converter:
+    title: Base64 string encoder/decoder
+    description: رمزگذاری و رمزگشایی رشته‌ها با base64.
+
+  toml-to-yaml:
+    title: TOML to YAML
+    description: تجزیه و تبدیل TOML به YAML.
+
+  math-evaluator:
+    title: Math evaluator
+    description: ماشین‌حساب پیشرفته برای محاسبات ریاضی.
+
+  json-to-yaml-converter:
+    title: JSON to YAML converter
+    description: تبدیل آنلاین JSON به YAML.
+
+  url-parser:
+    title: URL parser
+    description: تجزیه URL به اجزای مختلف آن.
+
+  iban-validator-and-parser:
+    title: IBAN validator and parser
+    description: اعتبارسنجی و تجزیه شماره IBAN.
+
+  user-agent-parser:
+    title: User-agent parser
+    description: تشخیص و تجزیه مرورگر، سیستم‌عامل و دستگاه از user-agent.
+
+  numeronym-generator:
+    title: Numeronym generator
+    description: تولید numeronym (مثل i18n برای internationalization).
+
+  case-converter:
+    title: Case converter
+    description: تبدیل حالت متن بین فرمت‌های مختلف.
+
+  html-entities:
+    title: Escape HTML entities
+    description: escape یا unescape کردن موجودیت‌های HTML.
+
+  docker-run-to-docker-compose-converter:
+    title: Docker run to Docker compose converter
+    description: تبدیل دستورات docker run به فایل docker-compose.
+
+  mac-address-lookup:
+    title: MAC address lookup
+    description: یافتن سازنده دستگاه با MAC address.
+
+  mime-types:
+    title: MIME types
+    description: تبدیل MIME types به پسوند فایل و بالعکس.
+
+  toml-to-json:
+    title: TOML to JSON
+    description: تجزیه و تبدیل TOML به JSON.
+
+  lorem-ipsum-generator:
+    title: Lorem ipsum generator
+    description: تولید متن Lorem ipsum برای طراحی و نمونه‌سازی.
+
+  qrcode-generator:
+    title: QR Code generator
+    description: تولید و دانلود QR code برای URL یا متن.
+
+  wifi-qrcode-generator:
+    title: WiFi QR Code generator
+    description: تولید QR code برای اتصال سریع به WiFi.
+
+  xml-formatter:
+    title: XML formatter
+    description: فرمت‌بندی و زیباسازی XML.
+
+  temperature-converter:
+    title: Temperature converter
+    description: تبدیل دما بین واحدهای مختلف (سلسیوس، فارنهایت، کلوین و ...).
+
+  chmod-calculator:
+    title: Chmod calculator
+    description: محاسبه دسترسی‌های chmod.
+
+  rsa-key-pair-generator:
+    title: RSA key pair generator
+    description: تولید جفت کلید RSA خصوصی و عمومی.
+
+  html-wysiwyg-editor:
+    title: HTML WYSIWYG editor
+    description: ویرایشگر HTML آنلاین با پیش‌نمایش فوری.
+
+  yaml-to-toml:
+    title: YAML to TOML
+    description: تجزیه و تبدیل YAML به TOML.
+
+  mac-address-generator:
+    title: MAC address generator
+    description: تولید MAC address با تعداد و پیشوند دلخواه.
+
+  json-diff:
+    title: JSON diff
+    description: مقایسه دو شیء JSON و نمایش تفاوت‌ها.
+
+  jwt-parser:
+    title: JWT parser
+    description: تجزیه و رمزگشایی JSON Web Token.
+
+  date-converter:
+    title: Date-time converter
+    description: تبدیل تاریخ و زمان به فرمت‌های مختلف.
+
+  phone-parser-and-formatter:
+    title: Phone parser and formatter
+    description: تجزیه، اعتبارسنجی و فرمت‌بندی شماره تلفن.
+
+  ipv4-subnet-calculator:
+    title: IPv4 subnet calculator
+    description: محاسبه اطلاعات subnet از IPv4 CIDR.
+
+  og-meta-generator:
+    title: Open graph meta generator
+    description: تولید تگ‌های meta برای Open Graph و شبکه‌های اجتماعی.
+
+  ipv6-ula-generator:
+    title: IPv6 ULA generator
+    description: تولید آدرس IP محلی IPv6 طبق RFC4193.
+
+  hash-text:
+    title: Hash text
+    description: 'هش کردن متن با MD5، SHA1، SHA256، SHA512 و ...'
+
+  json-to-toml:
+    title: JSON to TOML
+    description: تجزیه و تبدیل JSON به TOML.
+
+  device-information:
+    title: Device information
+    description: اطلاعات دستگاه جاری (اندازه صفحه، pixel-ratio، user agent و ...).
+
+  pdf-signature-checker:
+    title: PDF signature checker
+    description: بررسی امضاهای دیجیتال فایل PDF.
+
+  json-minify:
+    title: JSON minify
+    description: فشرده‌سازی JSON با حذف فضاهای اضافی.
+
+  ulid-generator:
+    title: ULID generator
+    description: تولید ULID (شناسه یکتای مرتب‌سازی لغوی).
+
+  string-obfuscator:
+    title: String obfuscator
+    description: مبهم‌سازی رشته مثل توکن یا IBAN برای اشتراک‌گذاری امن.
+
+  base-converter:
+    title: Integer base converter
+    description: تبدیل عدد بین مبناهای مختلف (دهدهی، هگزادسیمال، باینری و ...).
+
+  yaml-to-json-converter:
+    title: YAML to JSON converter
+    description: تبدیل آنلاین YAML به JSON.
+
+  uuid-generator:
+    title: UUIDs generator
+    description: تولید UUID (شناسه یکتای جهانی) در نسخه‌های مختلف.
+
+  ipv4-address-converter:
+    title: IPv4 address converter
+    description: تبدیل آدرس IPv4 به دهدهی، باینری، هگز و IPv6.
+
+  text-statistics:
+    title: Text statistics
+    description: آمار متن (تعداد کاراکتر، کلمه، اندازه و ...).
+
+  text-to-nato-alphabet:
+    title: Text to NATO alphabet
+    description: تبدیل متن به الفبای ناتو برای انتقال شفاهی.
+
+  basic-auth-generator:
+    title: Basic auth generator
+    description: تولید هدر basic auth با base64 از نام کاربری و رمز عبور.
+
+  text-to-unicode:
+    title: Text to Unicode
+    description: تبدیل متن به یونیکد و بالعکس.
+
+  ipv4-range-expander:
+    title: IPv4 range expander
+    description: محاسبه subnet IPv4 از آدرس شروع و پایان.
+
+  text-diff:
+    title: Text diff
+    description: مقایسه دو متن و نمایش تفاوت‌ها.
+
+  otp-generator:
+    title: OTP code generator
+    description: تولید و اعتبارسنجی کد OTP برای احراز هویت دو مرحله‌ای.
+
+  url-encoder:
+    title: Encode/decode URL-formatted strings
+    description: رمزگذاری و رمزگشایی متن با فرمت URL (percent-encoded).
+
+  text-to-binary:
+    title: Text to ASCII binary
+    description: تبدیل متن به باینری ASCII و بالعکس.
+
+  ascii-text-drawer:
+    title: ASCII text drawer
+    description: تولید هنر ASCII از متن.
+
+  safelink-decoder:
+    title: Safelink decoder
+    description: رمزگشایی لینک‌های SafeLink مایکروسافت.
+
+  regex-tester:
+    title: Regex tester
+    description: آزمایش و اعتبارسنجی عبارات منظم (Regex).
+
+  regex-memo:
+    title: Regex cheatsheet
+    description: راهنمای سریع عبارات منظم.
+
+  markdown-to-html:
+    title: Markdown to HTML
+    description: تبدیل آنلاین Markdown به HTML.
+
+  xml-to-json:
+    title: XML to JSON
+    description: تبدیل XML به JSON.
+
+  json-to-xml:
+    title: JSON to XML
+    description: تبدیل JSON به XML.
+
+  email-normalizer:
+    title: Email normalizer
+    description: نرمال‌سازی آدرس ایمیل.
+
+  json-viewer:
+    title: JSON viewer
+    description: نمایش و بررسی ساختار JSON.
+
+  yaml-viewer:
+    title: YAML viewer
+    description: نمایش و بررسی ساختار YAML.
+
+  json-prettify:
+    title: JSON prettify and format
+    description: فرمت‌بندی و زیباسازی JSON.
+
+  yaml-prettify:
+    title: YAML prettify and format
+    description: فرمت‌بندی و زیباسازی YAML.
+
+  meta-tag-generator:
+    title: Meta tag generator
+    description: تولید تگ‌های meta HTML برای وبسایت.
+
+  otp-code-generator-and-validator:
+    title: OTP code generator
+    description: تولید و اعتبارسنجی کد OTP.
+
+  integer-base-converter:
+    title: Integer base converter
+    description: تبدیل اعداد صحیح بین مبناهای مختلف.
