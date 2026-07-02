@@ -10,9 +10,9 @@ Useful tools for developer and people working in IT. <a href="https://it-tools.t
 
 ## Functionalities and roadmap
 
-Please check the [issues](https://github.com/CorentinTh/it-tools/issues) to see if some feature listed to be implemented.
+Please check the [issues](https://github.com/ahshiri834/tools-it/issues) to see if some feature listed to be implemented.
 
-You have an idea of a tool? Submit a [feature request](https://github.com/CorentinTh/it-tools/issues/new/choose)!
+You have an idea of a tool? Submit a [feature request](https://github.com/ahshiri834/tools-it/issues/new/choose)!
 
 ## Self host
 
@@ -115,11 +115,11 @@ It will create a directory in `src/tools` with the correct files, and a the impo
 
 Big thanks to all the people who have already contributed!
 
-[![contributors](https://contrib.rocks/image?repo=corentinth/it-tools&refresh=1)](https://github.com/corentinth/it-tools/graphs/contributors)
+[![contributors](https://contrib.rocks/image?repo=corentinth/it-tools&refresh=1)](https://github.com/ahshiri834/tools-it/graphs/contributors)
 
 ## Credits
 
-Coded with ❤️ by [Corentin Thomasset](https://corentin.tech?utm_source=it-tools&utm_medium=readme).
+Coded with ❤️ by [tools-it.ir](https://tools-it.ir).
 
 This project is continuously deployed using [vercel.com](https://vercel.com).
 

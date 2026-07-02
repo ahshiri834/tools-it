@@ -16,6 +16,7 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
   const styleStore = useStyleStore();
   const router = useRouter();
   const searchPrompt = ref('');
+  const repositoryUrl = 'https://github.com/ahshiri834/tools-it';
 
   const toolsOptions = toolStore.tools.map(tool => ({
     ...tool,
@@ -48,16 +49,16 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
     },
     {
       name: 'Github repository',
-      href: 'https://github.com/CorentinTh/it-tools',
+      href: repositoryUrl,
       category: 'External',
-      description: 'View the source code of it-tools on Github.',
+      description: 'View the source code of Tools IT on Github.',
       keywords: ['github', 'repo', 'repository', 'source', 'code'],
       icon: GithubIcon,
     },
     {
       name: 'Report a bug or an issue',
-      description: 'Report a bug or an issue to help improve it-tools.',
-      href: 'https://github.com/CorentinTh/it-tools/issues/new/choose',
+      description: 'Report a bug or an issue to help improve Tools IT.',
+      href: `${repositoryUrl}/issues/new/choose`,
       category: 'Actions',
       keywords: ['report', 'issue', 'bug', 'problem', 'error'],
       icon: BugIcon,
