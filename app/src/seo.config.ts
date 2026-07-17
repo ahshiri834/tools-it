@@ -7,9 +7,10 @@ export const siteConfig = {
   homeDescription: 'مجموعه‌ای کامل از ابزارهای آنلاین رایگان برای برنامه‌نویسان و متخصصان فناوری اطلاعات؛ تبدیل JSON و YAML، تولید UUID و هش، رمزگذاری، QR کد، Base64، Regex و ده‌ها ابزار دیگر. سریع، امن و بدون نیاز به نصب.',
 };
 
+// آدرس canonical همیشه با اسلش پایانی ساخته می‌شود، چون صفحات پیش‌رندرشده
+// به شکل dist/<route>/index.html نوشته می‌شوند و آپاچی فرم بدون اسلش را ۳۰۱ می‌کند.
+// بدون این، هر canonical به آدرسی اشاره می‌کرد که خودش ریدایرکت می‌شود.
 export function pageUrl(path: string): string {
-  if (path === '/') {
-    return `${siteConfig.domain}/`;
-  }
-  return `${siteConfig.domain}${path}`;
+  const withSlash = path.endsWith('/') ? path : `${path}/`;
+  return `${siteConfig.domain}${withSlash}`;
 }

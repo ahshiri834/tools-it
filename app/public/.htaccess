@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # هر صفحه فقط از یک آدرس سرو شود: https + بدون www + با اسلش پایانی.
+  # ترتیب قوانین مهم است — پروتکل و دامنه قبل از fallback حل می‌شوند تا
+  # کراولر به‌جای زنجیره‌ی چند ۳۰۱ پشت‌سرهم، یک ۳۰۱ بگیرد.
+
+  # http → https (روی هاست‌های پشت پراکسی %{HTTPS} ست نمی‌شود، هر دو را چک می‌کنیم)
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://tools-it.ir%{REQUEST_URI} [L,R=301]
+
+  # www → بدون www
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^ https://tools-it.ir%{REQUEST_URI} [L,R=301]
+
+  # مسیرهای پیش‌رندرشده به‌صورت دایرکتوری/index.html نوشته می‌شوند؛
+  # اسلش پایانی را mod_dir اضافه می‌کند و همان فرم canonical ماست.
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
