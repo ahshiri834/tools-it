@@ -58,6 +58,7 @@ tools:
     measurement: اندازه‌گیری
     text: متن
     data: داده
+    iranian tools: 'ابزارهای ایرانی'
 
   password-strength-analyser:
     title: تحلیل قدرت رمز عبور
@@ -191,7 +192,11 @@ tools:
 
   iban-validator-and-parser:
     title: اعتبارسنجی شبا و IBAN
-    description: اعتبارسنجی و تجزیه شماره IBAN.
+    description: اعتبارسنجی و تجزیه شماره شبا و IBAN.
+
+  persian-number-normalizer:
+    title: نرمال‌سازی اعداد و متن فارسی
+    description: تبدیل ارقام فارسی و عربی به انگلیسی و برعکس، نرمال‌سازی حروف عربی به فارسی.
 
   user-agent-parser:
     title: تجزیه User Agent

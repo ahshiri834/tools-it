@@ -337,6 +337,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tools-it.ir/persian-number-normalizer/</loc>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tools-it.ir/phone-parser-and-formatter/</loc>
     <lastmod>2026-07-17</lastmod>
     <changefreq>weekly</changefreq>
