@@ -70,6 +70,7 @@ tools:
     measurement: Measurement
     text: Text
     data: Data
+    iranian tools: 'Iranian tools'
 
   password-strength-analyser:
     title: Password strength analyser
@@ -208,6 +209,10 @@ tools:
   iban-validator-and-parser:
     title: IBAN validator and parser
     description: Validate and parse IBAN numbers. Check if an IBAN is valid and get the country, BBAN, if it is a QR-IBAN and the IBAN friendly format.
+
+  persian-number-normalizer:
+    title: Persian number and text normalizer
+    description: Convert Persian and Arabic digits to English and back, and normalize Arabic characters to Persian.
 
   user-agent-parser:
     title: User-agent parser
