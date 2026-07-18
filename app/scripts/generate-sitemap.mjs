@@ -11,8 +11,8 @@ const today = new Date().toISOString().split('T')[0];
 
 const urls = routes
   .map((route) => {
-    // با اسلش پایانی، هم‌راستا با canonical و با فرمی که آپاچی سرو می‌کند
-    const loc = `${DOMAIN}${route.endsWith('/') ? route : `${route}/`}`;
+    // بدون اسلش پایانی، هم‌راستا با canonical و فرمی که آپاچی بعد از ۳۰۱ سرو می‌کند
+    const loc = route === '/' ? `${DOMAIN}/` : `${DOMAIN}${route.replace(/\/+$/, '')}`;
     const priority = route === '/' ? '1.0' : '0.8';
     const changefreq = route === '/' ? 'daily' : 'weekly';
     return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;

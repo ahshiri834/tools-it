@@ -1,23 +1,44 @@
+# جلوگیری از لیست شدن محتوای دایرکتوری‌ها
+Options -Indexes
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
-  # هر صفحه فقط از یک آدرس سرو شود: https + بدون www + با اسلش پایانی.
-  # ترتیب قوانین مهم است — پروتکل و دامنه قبل از fallback حل می‌شوند تا
-  # کراولر به‌جای زنجیره‌ی چند ۳۰۱ پشت‌سرهم، یک ۳۰۱ بگیرد.
+  # هر صفحه فقط از یک آدرس canonical سرو شود:
+  #   https + بدون www + بدون اسلش پایانی + بدون پسوند فایل.
+  # ترتیب قوانین مهم است تا کراولر به‌جای زنجیره‌ی چند ۳۰۱، حداقل ریدایرکت را بگیرد.
 
-  # http → https (روی هاست‌های پشت پراکسی %{HTTPS} ست نمی‌شود، هر دو را چک می‌کنیم)
+  # mod_dir به‌صورت پیش‌فرض به مسیر دایرکتوری اسلش پایانی اضافه (۳۰۱) می‌کند؛
+  # چون فرم canonical ما بدون اسلش است، این رفتار را خاموش می‌کنیم.
+  DirectorySlash Off
+
+  # ---- ۱) http → https و www → بدون www (در یک ۳۰۱) ----
+  # مقصد هاست canonical را hardcode می‌کند، پس www هم هم‌زمان اصلاح می‌شود.
+  # شرط‌ها: ( HTTPS!=on  و  X-Forwarded-Proto!=https )  یا  ( میزبان با www )
+  # روی هاست https پشت پراکسی (HTTPS=off ولی X-Forwarded-Proto=https) حلقه ایجاد نمی‌شود.
   RewriteCond %{HTTPS} !=on
-  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
-  RewriteRule ^ https://tools-it.ir%{REQUEST_URI} [L,R=301]
-
-  # www → بدون www
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https [OR]
   RewriteCond %{HTTP_HOST} ^www\. [NC]
   RewriteRule ^ https://tools-it.ir%{REQUEST_URI} [L,R=301]
 
-  # مسیرهای پیش‌رندرشده به‌صورت دایرکتوری/index.html نوشته می‌شوند؛
-  # اسلش پایانی را mod_dir اضافه می‌کند و همان فرم canonical ماست.
+  # ---- ۲) حذف پسوند index.html از انتهای آدرس ----
+  # /foo/index.html → /foo   و   /index.html → /
+  RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+  RewriteRule ^(.*/)?index\.html$ /%1 [L,R=301]
+
+  # ---- ۳) حذف اسلش پایانی (به‌جز ریشه) ----
+  # /foo/ → /foo   (ریشه «/» به‌خاطر شرط ^/.+/$ دست‌نخورده می‌ماند)
+  RewriteCond %{REQUEST_URI} ^/.+/$
+  RewriteRule ^(.+?)/+$ https://tools-it.ir/$1 [L,R=301]
+
+  # ---- ۴) سرو صفحه‌ی پیش‌رندرشده بدون افشای اسلش/پسوند ----
+  # /foo → foo/index.html به‌صورت داخلی (بدون ریدایرکت)
   RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^(.+)$ /$1/index.html [L]
+
+  # ---- ۵) fallback مسیرهای SPA به قالب اصلی ----
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
