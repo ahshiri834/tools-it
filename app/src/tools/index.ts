@@ -88,6 +88,7 @@ import { tool as macAddressLookup } from './mac-address-lookup';
 import { tool as xmlFormatter } from './xml-formatter';
 import { tool as yamlViewer } from './yaml-viewer';
 import { tool as persianNumberNormalizer } from './persian-number-normalizer';
+import { tool as jalaliDateConverter } from './jalali-date-converter';
 
 export const toolsByCategory: ToolCategory[] = [
   {
@@ -193,7 +194,7 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Iranian tools',
-    components: [persianNumberNormalizer],
+    components: [jalaliDateConverter, persianNumberNormalizer],
   },
 ];
 
