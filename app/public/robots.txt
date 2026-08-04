@@ -1,4 +1,17 @@
+# tools-it.ir
+# همه‌ی ابزارها باید ایندکس شوند؛ فقط فایل‌های داخلی و پارامترهای تکراری کنار می‌روند.
+
 User-agent: *
 Allow: /
+
+# فایل‌های سرویس‌ورکر و اسکریپت‌های داخلی ارزش ایندکس شدن ندارند و فقط
+# بودجه‌ی کراول را مصرف می‌کنند.
+Disallow: /sw.js
+Disallow: /workbox-*.js
+Disallow: /registerSW.js
+
+# پارامترهای UTM و ref نسخه‌ی تکراری از همان صفحه می‌سازند.
+Disallow: /*?utm_
+Disallow: /*?ref=
 
 Sitemap: https://tools-it.ir/sitemap.xml

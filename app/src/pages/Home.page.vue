@@ -46,8 +46,22 @@ useHead({
         '@context': 'https://schema.org',
         '@type': 'WebSite',
         'name': siteConfig.brand,
+        'alternateName': ['ابزارهای آنلاین IT', 'تولز آی‌تی', 'tools-it'],
         'url': siteConfig.domain,
         'inLanguage': 'fa-IR',
+        'description': siteConfig.homeDescription,
+      }),
+    },
+    // Organization جدا از WebSite تعریف می‌شود تا گوگل برند و لوگو را
+    // به‌عنوان یک موجودیت مستقل بشناسد (لازمه‌ی نمایش لوگو کنار نتایج).
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        'name': siteConfig.brand,
+        'url': siteConfig.domain,
+        'logo': `${siteConfig.domain}/android-chrome-512x512.png`,
         'description': siteConfig.homeDescription,
       }),
     },

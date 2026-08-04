@@ -7,6 +7,12 @@ app/dist/
 app/dist-ssr/
 app/coverage/
 
+# خروجی incremental تایپ‌چک
+*.tsbuildinfo
+
+# تنظیمات محلی ابزارها
+.claude/settings.local.json
+
 # لاگ‌ها و فایل‌های موقت
 *.log
 .DS_Store

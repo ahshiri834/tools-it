@@ -13,24 +13,38 @@ Options -Indexes
   # چون فرم canonical ما بدون اسلش است، این رفتار را خاموش می‌کنیم.
   DirectorySlash Off
 
-  # ---- ۱) http → https و www → بدون www (در یک ۳۰۱) ----
-  # مقصد هاست canonical را hardcode می‌کند، پس www هم هم‌زمان اصلاح می‌شود.
-  # شرط‌ها: ( HTTPS!=on  و  X-Forwarded-Proto!=https )  یا  ( میزبان با www )
-  # روی هاست https پشت پراکسی (HTTPS=off ولی X-Forwarded-Proto=https) حلقه ایجاد نمی‌شود.
-  RewriteCond %{HTTPS} !=on
-  RewriteCond %{HTTP:X-Forwarded-Proto} !=https [OR]
+  # ---- ۱-الف) www → بدون www (هر اسکیمی) ----
+  # این قانون باید مستقل از وضعیت HTTPS باشد. در نسخه‌ی قبلی شرط‌ها به شکل
+  # «HTTPS!=on  و  (XFP!=https  یا  www)» ارزیابی می‌شد، یعنی روی https هیچ‌وقت
+  # اجرا نمی‌شد و https://www.tools-it.ir/... به‌عنوان یک هاست تکراری سرو می‌ماند.
+  # چون مقصد مستقیماً https+بدون‌www است، http://www هم با همین یک ۳۰۱ حل می‌شود.
   RewriteCond %{HTTP_HOST} ^www\. [NC]
   RewriteRule ^ https://tools-it.ir%{REQUEST_URI} [L,R=301]
 
+  # قوانین ۲ و ۳ عمداً *قبل* از http→https می‌آیند و مقصدشان مطلق و https است.
+  # اگر بعد از آن می‌آمدند، آدرسی مثل http://tools-it.ir/foo/ دو ۳۰۱ پشت سر هم
+  # می‌گرفت (اول https، بعد حذف اسلش). با این ترتیب هر شکل غیرcanonical دقیقاً
+  # با یک ۳۰۱ به آدرس نهایی می‌رسد — مهم است چون سرچ‌کنسول ۱۴۴ صفحه را
+  # «Page with redirect» گزارش کرده و بخشی از آن‌ها هنوز روی http ایندکس‌اند.
+
   # ---- ۲) حذف پسوند index.html از انتهای آدرس ----
   # /foo/index.html → /foo   و   /index.html → /
+  # الگو عمداً «/?» را هم می‌بلعد و از $1 (کپچر خودِ RewriteRule) استفاده می‌کند،
+  # نه %1 از RewriteCond: با %1 اسلش پایانی حفظ می‌شد و خروجی /foo/ بود که
+  # بلافاصله ۳۰۱ دوم را از قانون ۳ می‌گرفت. این شکل، یک‌مرحله‌ای است.
   RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
-  RewriteRule ^(.*/)?index\.html$ /%1 [L,R=301]
+  RewriteRule ^(.*?)/?index\.html$ https://tools-it.ir/$1 [L,R=301]
 
   # ---- ۳) حذف اسلش پایانی (به‌جز ریشه) ----
   # /foo/ → /foo   (ریشه «/» به‌خاطر شرط ^/.+/$ دست‌نخورده می‌ماند)
   RewriteCond %{REQUEST_URI} ^/.+/$
   RewriteRule ^(.+?)/+$ https://tools-it.ir/$1 [L,R=301]
+
+  # ---- ۱-ب) http → https (هرچه تا اینجا canonical بوده ولی روی http است) ----
+  # روی هاست https پشت پراکسی (HTTPS=off ولی X-Forwarded-Proto=https) حلقه ایجاد نمی‌شود.
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://tools-it.ir%{REQUEST_URI} [L,R=301]
 
   # ---- ۴) سرو صفحه‌ی پیش‌رندرشده بدون افشای اسلش/پسوند ----
   # /foo → foo/index.html به‌صورت داخلی (بدون ریدایرکت)
@@ -42,4 +56,61 @@ Options -Indexes
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# فشرده‌سازی — حجم HTML/CSS/JS/SVG را چند برابر کم می‌کند و مستقیم روی
+# LCP و امتیاز Core Web Vitals (که سیگنال رتبه‌بندی است) اثر دارد.
+# فایل‌های woff2 خودشان از قبل فشرده‌اند و دوباره فشرده نمی‌شوند.
+# ---------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript text/javascript
+  AddOutputFilterByType DEFLATE application/json application/xml application/rss+xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType image/svg+xml .svg
+  AddType application/manifest+json .webmanifest
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# کش مرورگر — asset های بیلد (هش در نام) و فونت‌ها یک‌ساله کش می‌شوند،
+# ولی HTML هرگز کش نمی‌شود تا انتشار نسخه‌ی جدید بلافاصله دیده شود و
+# گوگل نسخه‌ی قدیمی صفحه را دوباره کراول نکند.
+# ---------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/png "access plus 6 months"
+  ExpiresByType image/x-icon "access plus 6 months"
+  ExpiresByType image/svg+xml "access plus 6 months"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(woff2|woff|ttf)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # assets/ در بیلد Vite نام هش‌دار دارد، پس immutable امن است
+  <FilesMatch "\.(js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # استثنا: سرویس‌ورکر و فایل‌های workbox نام هش‌دار ندارند و در هر انتشار با
+  # همین نام عوض می‌شوند. اگر یک‌ساله کش شوند، کاربر برای مدت طولانی روی نسخه‌ی
+  # قدیمی اپ قفل می‌ماند. این بلوک بعد از بلوک بالا می‌آید تا مقدار را بازنویسی کند.
+  <FilesMatch "^(sw\.js|registerSW\.js|workbox-.*\.js)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  # sitemap و robots باید تازه بمانند تا تغییرات سریع به کراولر برسد
+  <FilesMatch "^(sitemap\.xml|robots\.txt)$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
 </IfModule>
